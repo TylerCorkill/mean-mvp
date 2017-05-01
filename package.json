@@ -1,7 +1,6 @@
 {
   "name": "mean-mvp",
   "version": "1.0.0",
-  "description": "",
   "main": "exp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/TylerCorkill/mean-mvp/issues"
   },
-  "homepage": "https://github.com/TylerCorkill/mean-mvp#readme"
+  "homepage": "https://github.com/TylerCorkill/mean-mvp#readme",
+  "dependencies": {
+    "angular": "^1.6.4"
+  },
+  "devDependencies": {},
+  "description": ""
 }
