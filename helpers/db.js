@@ -39,9 +39,9 @@ var verify = function(req, res, data) {
 
 var submit = function(id, data) {
   connection.query(`INSERT INTO submits
-                    (id, title, description, userID)
+                    (id, title, description, filepath, userID)
                     VALUES
-                    ('${id}', '${data.title}', '${data.description}', '${data.userID}')`,
+                    ('${id}', "${data.title}", "${data.description}", '${data.filepath}', '${data.userID}')`,
   function (error, results, fields) {
     if (error) { throw error; }
   });
@@ -100,7 +100,7 @@ var getRatings = function(submitID, res) {
 
       var average = sum / ratings.length;
       // console.log(average);
-      res.end(JSON.stringify(average));
+      res.end(average.toFixed(2));
     } else {
       res.end('NA');
     }

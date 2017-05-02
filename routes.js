@@ -1,8 +1,10 @@
-var express = require('express');
-var path = require("path");
-var bodyParser = require('body-parser');
-var db = require('./helpers/db');
-var session = require('express-session');
+var express = require('express'),
+    path = require("path"),
+    bodyParser = require('body-parser'),
+    db = require('./helpers/db'),
+    session = require('express-session'),
+    fs = require('fs'),
+    request = require('request');
 
 var viewPath = path.join(__dirname+'/public/views/');
 var app = express();
@@ -18,6 +20,17 @@ app.use(session({
     loggedIn: false
   }
 }));
+
+
+var download = function(uri, filename, callback){
+  request.head(uri, function(err, res, body){
+    // console.log('content-type:', res.headers['content-type']);
+    // console.log('content-length:', res.headers['content-length']);
+
+    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+  });
+};
+
 
 
 var auth = function(req, res) {
@@ -61,10 +74,21 @@ app.post('/rating', function(req, res) {
 
 
 app.post('/submit', function(req, res) {
+
   req.body.userID = req.session.user.id;
-  console.log(req.body);
-  db.submit(req.body);
-  res.redirect('/');
+  var index = req.body.img.lastIndexOf("/") + 1;
+  var filename = req.body.img.substr(index);
+
+  download(req.body.img, 'public/img/' + filename, function() {
+    console.log('done');
+    req.body.filepath = 'img/' + filename;
+    db.submit(req.body);
+    res.redirect('/');
+  });
+
+
+  // console.log(req.body);
+
 });
 
 app.post('/signup', function(req, res) {

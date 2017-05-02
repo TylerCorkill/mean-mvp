@@ -1,5 +1,8 @@
 body {
   background-color: #abbcd8;
+  padding: 0;
+  font-family: 'Noto Sans';
+  /*margin: 0;*/
 }
 
 
@@ -55,4 +58,8 @@ rating-entry {
 
 .rating * {
   padding-right: 5px;
+}
+
+img {
+  width: 100%;
 }

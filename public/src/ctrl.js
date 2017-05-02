@@ -31,6 +31,18 @@ angular.module('main')
 })
 
 
+// .run( function($rootScope, $location, $window) {
+//    $rootScope.$watch(function() {
+//       return $location.url();
+//     },
+//     function(a){
+//       console.log('url has changed: ' + a);
+//       $window.location.reload();
+//       // show loading div, etc...
+//     });
+// })
+
+
 .controller('entries', function($http, $scope) {
   this.rate = (number, id) => {
     $http.post('/rating', {rating: number, submitID: id});
@@ -39,7 +51,7 @@ angular.module('main')
   var id = JSON.stringify($scope.$parent.thing.id);
 
   $http.post('/average', {id: id}).then( (response) => {
-    console.log(response);
+    // console.log(response);
     this.average = response.data;
   }, (response) => {
     console.log('ERROR', response);
