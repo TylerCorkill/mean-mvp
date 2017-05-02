@@ -62,7 +62,8 @@ angular.module('main')
 .directive('ratingEntry', function() {
   return {
     scope: {
-      rating: '<'
+      rating: '<',
+      switch: '<'
     },
     restrict: 'E',
     controller: 'entries',
