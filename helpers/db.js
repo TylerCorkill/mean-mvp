@@ -47,6 +47,16 @@ var submit = function(id, data) {
   });
 };
 
+var rate = function(id, data) {
+  connection.query(`INSERT INTO ratings
+                    (id, submitID, userID, rating)
+                    VALUES
+                    ('${id}', '${data.submitID}', '${data.userID}', '${data.rating}')`,
+  function (error, results, fields) {
+    if (error) { throw error; }
+  });
+};
+
 
 
 
@@ -70,6 +80,33 @@ var getFromTable = function(callback, table) {
 };
 
 
+var getRatings = function(submitID, res) {
+  var queryText = `SELECT rating FROM ratings
+                   WHERE submitID = '${submitID}'`;
+  connection.query(queryText, (error, results, fields) => {
+    if (error) { throw error; }
+
+    if (results.length) {
+      var ratings = [];
+      for (var obj of results) {
+        ratings.push(obj.rating);
+      }
+      // console.log(ratings);
+
+      var sum = ratings.reduce(function(a, b) {
+        // console.log(a);
+        return a + b;
+      });
+
+      var average = sum / ratings.length;
+      // console.log(average);
+      res.end(JSON.stringify(average));
+    } else {
+      res.end('NA');
+    }
+  });
+};
+
 
 
 
@@ -89,7 +126,18 @@ exports.submit = function(data) {
   uniqueID(data, 'submits', submit);
 };
 
-exports.getRatings = function(callback) {
+exports.rate = function(data) {
+  uniqueID(data, 'ratings', rate);
+};
+
+exports.getSubmits = function(callback) {
   // console.log('asdf');
   getFromTable(callback, 'submits');
 };
+
+exports.getRatings = function(id, res) {
+  // console.log('asdf');
+  getRatings(id, res);
+};
+
+

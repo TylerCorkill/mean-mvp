@@ -33,57 +33,52 @@ app.get('/home', auth);
 app.get('/submit', auth);
 
 app.get('/login', function(req, res) {
-  // res.render('index');
   res.sendFile(viewPath + 'index.html');
 });
 
 app.get('/signup', function(req, res) {
-  // res.render('index');
   res.sendFile(viewPath + 'index.html');
 });
 
 
-app.get('/ratings', function(req, res) {
-  db.getRatings(function(results) {
-    // this.ratings = results;
-
-    // console.log(results);
+app.get('/submissions', function(req, res) {
+  db.getSubmits(function(results) {
     res.end(JSON.stringify(results));
-
-    // $window.location.reload();
   });
+});
+
+app.post('/average', function(req, res) {
+  db.getRatings(req.body.id, res);
 });
 
 
 
+app.post('/rating', function(req, res) {
+  req.body.userID = req.session.user.id;
+  db.rate(req.body);
+  res.redirect('/');
+});
+
+
 app.post('/submit', function(req, res) {
-  // console.log(req.body);
   req.body.userID = req.session.user.id;
   console.log(req.body);
   db.submit(req.body);
   res.redirect('/');
-  // res.sendFile(viewPath + 'index.html');
 });
 
 app.post('/signup', function(req, res) {
-  // console.log(req.body);
   db.newUser(req.body);
   res.redirect('/');
-  // res.sendFile(viewPath + 'index.html');
 });
 
 app.post('/login', function(req, res) {
-  // console.log(req.body);
   db.verifyUser(req, res, req.body);
-  // res.redirect('/');
-  // res.sendFile(viewPath + 'index.html');
 });
 
 
 app.get('/*', function(req, res) {
-  // res.render('index');
   res.redirect('/home');
-  // res.sendFile(viewPath + 'index.html');
 });
 
 

@@ -18,7 +18,7 @@ angular.module('main')
 
   $http({
     method: 'GET',
-    url: '/ratings'
+    url: '/submissions'
   }).then( (response) => {
       // console.log(this);
       this.ratings = response.data;
@@ -31,10 +31,19 @@ angular.module('main')
 })
 
 
-.controller('entries', function() {
-  this.rate = (number) => {
-    console.log(number);
+.controller('entries', function($http, $scope) {
+  this.rate = (number, id) => {
+    $http.post('/rating', {rating: number, submitID: id});
   };
+
+  var id = JSON.stringify($scope.$parent.thing.id);
+
+  $http.post('/average', {id: id}).then( (response) => {
+    console.log(response);
+    this.average = response.data;
+  }, (response) => {
+    console.log('ERROR', response);
+  });
 })
 
 
