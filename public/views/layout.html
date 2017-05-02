@@ -1,8 +1,9 @@
-<ol>
-  <li ng-click="main.template = 'views/home.html'">home</li>
-  <li ng-click="main.template = 'views/submit.html'">submit</li>
-  <li ng-click="main.template = 'views/login.html'">login</li>
-  <li ng-click="main.template = 'views/signup.html'">signup</li>
+<ol id="nav">
+  <li ng-click="main.switch('home')">home</li>
+  <!-- <a href="/home"><li>home</li></a> -->
+  <li ng-click="main.switch('submit')">submit</li>
+  <li ng-click="main.switch('login')">login</li>
+  <li ng-click="main.switch('signup')">signup</li>
 </ol>
 
 <main-body ng-include src="main.template">main-body broken</main-body>
