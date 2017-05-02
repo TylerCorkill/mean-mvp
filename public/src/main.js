@@ -5,6 +5,13 @@ angular.module('main', [])
   // console.log(this);
   this.hello = 'hello world';
 
+  this.template = 'views/home.html';
+
+  this.switch = (destination) => {
+    console.log(this);
+    this.templateUrl = 'views/' + destination;
+  };
+
 })
 
 .directive('app', function() {
@@ -12,8 +19,8 @@ angular.module('main', [])
     scope: {},
     restrict: 'E',
     controller: 'hello',
-    controllerAs: 'stuff',
+    controllerAs: 'main',
     bindToController: true,
-    templateUrl: 'views/inner.html'
+    templateUrl: 'views/layout.html'
   };
 });
