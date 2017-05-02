@@ -38,7 +38,7 @@ var verify = function(req, res, data) {
 
 
 var submit = function(id, data) {
-  connection.query(`INSERT INTO ratings
+  connection.query(`INSERT INTO submits
                     (id, title, description, userID)
                     VALUES
                     ('${id}', '${data.title}', '${data.description}', '${data.userID}')`,
@@ -86,10 +86,10 @@ exports.verifyUser = function(req, res, data) {
 };
 
 exports.submit = function(data) {
-  uniqueID(data, 'ratings', submit);
+  uniqueID(data, 'submits', submit);
 };
 
 exports.getRatings = function(callback) {
   // console.log('asdf');
-  getFromTable(callback, 'ratings');
+  getFromTable(callback, 'submits');
 };

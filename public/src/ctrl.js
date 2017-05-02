@@ -15,6 +15,7 @@ angular.module('main')
   };
 
 
+
   $http({
     method: 'GET',
     url: '/ratings'
@@ -30,13 +31,20 @@ angular.module('main')
 })
 
 
+.controller('entries', function() {
+  this.rate = (number) => {
+    console.log(number);
+  };
+})
+
+
 .directive('ratingEntry', function() {
   return {
     scope: {
       rating: '<'
     },
     restrict: 'E',
-    controller: function() {},
+    controller: 'entries',
     controllerAs: 'main',
     bindToController: true,
     templateUrl: 'views/ratingEntry.html'

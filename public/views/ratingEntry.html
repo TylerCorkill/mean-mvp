@@ -1,1 +1,14 @@
-<div>{{main.rating}}</div>
+<!-- <div>{{main.rating}}</div> -->
+
+<div class="rating-wrapper">
+  <h3 class="rating-title">{{main.rating.title}}</h3>
+  <p class="rating-description">{{main.rating.description}}</p>
+  <div class="rating">
+    <h5>rating:</h5>
+    <p ng-click="main.rate(1)">1</p>
+    <p ng-click="main.rate(2)">2</p>
+    <p ng-click="main.rate(3)">3</p>
+    <p ng-click="main.rate(4)">4</p>
+    <p ng-click="main.rate(5)">5</p>
+  </div>
+</div>
