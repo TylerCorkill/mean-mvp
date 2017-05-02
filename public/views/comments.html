@@ -1,0 +1,19 @@
+<div class="rating-wrapper">
+  <h3 class="rating-title">{{main.rating.title}}</h3>
+  <img ng-src="{{main.rating.filepath}}" ng-click="main.switch('comments', main.rating.id)">
+  <p class="rating-description">{{main.rating.description}}</p>
+
+  <div class="asdf">
+    <p>avg</p>
+    <p>{{main.average}}</p>
+  </div>
+
+  <div class="rating">
+    <!-- <h5>rating:</h5> -->
+    <p ng-click="main.rate(1,main.rating.id)">1</p>
+    <p ng-click="main.rate(2,main.rating.id)">2</p>
+    <p ng-click="main.rate(3,main.rating.id)">3</p>
+    <p ng-click="main.rate(4,main.rating.id)">4</p>
+    <p ng-click="main.rate(5,main.rating.id)">5</p>
+  </div>
+</div>

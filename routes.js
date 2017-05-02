@@ -100,6 +100,11 @@ app.post('/login', function(req, res) {
   db.verifyUser(req, res, req.body);
 });
 
+// app.get('/*/comments', function(req, res) {
+//   console.log('success');
+//   // res.redirect('/home');
+// });
+
 
 app.get('/*', function(req, res) {
   res.redirect('/home');

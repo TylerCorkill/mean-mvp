@@ -6,12 +6,14 @@ angular.module('main')
 
   // console.log($location);
 
-  this.switch = (destination) => {
-
+  this.switch = (destination, id) => {
     this.template = 'views/' + destination + '.html';
-    // if (destination )
     $window.location.reload();
-    $location.path(destination);
+    if (id) {
+      $location.path(id + '/' + destination);
+    } else {
+      $location.path(destination);
+    }
   };
 
 
@@ -44,9 +46,7 @@ angular.module('main')
 
 
 .controller('entries', function($http, $scope) {
-  this.rate = (number, id) => {
-    $http.post('/rating', {rating: number, submitID: id});
-  };
+
 
   var id = JSON.stringify($scope.$parent.thing.id);
 
@@ -56,6 +56,16 @@ angular.module('main')
   }, (response) => {
     console.log('ERROR', response);
   });
+
+  this.rate = (number, id) => {
+    $http.post('/rating', {rating: number, submitID: id});
+  };
+
+  // this.getComments = (number, id) => {
+  //   $http.post('/rating', {rating: number, submitID: id});
+  // };
+
+
 })
 
 

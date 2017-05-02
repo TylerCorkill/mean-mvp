@@ -56,7 +56,22 @@ rating-entry {
   /*display: inline-block;*/
 }
 
-.rating * {
+.your-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.your-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.your-rating > span:hover:before,
+.your-rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.your-rating * {
   padding-right: 5px;
 }
 
