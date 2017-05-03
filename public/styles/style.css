@@ -52,6 +52,7 @@ rating-entry {
   display: flex;
   flex-direction: column;
   background-color: #f4edc8;
+  padding: 0;
   /*background-color: white;*/
   border-radius: 10pt;
   /*justify-content: center;*/
@@ -74,6 +75,11 @@ rating-entry {
 .rating-title {
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.rating-description {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 #form-wrapper {
@@ -128,4 +134,8 @@ img {
   width: 100%;
   margin: 0;
   padding: 0;
+  /*border-style: solid;*/
+  border-top: 2px solid #0e76d1;
+  border-bottom: 2px solid #0e76d1;
+
 }
