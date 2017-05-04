@@ -11,8 +11,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   background-color: white;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  /*padding-top: 15px;
+  padding-bottom: 15px;*/
   margin: 0;
   margin-bottom: 30px;
   box-shadow: 0px 3px 10px grey;
@@ -22,14 +22,15 @@ body {
 
 #nav li {
 
-
+  padding-top: 15px;
+  padding-bottom: 15px;
   /*align-items: center;*/
   list-style: none;
   margin-right: 30px;
 }
 
 #nav li:hover {
-  font-weight: bolder;
+  font-weight: 900;
   cursor: default;
 }
 /*#main-body {
@@ -135,7 +136,7 @@ img {
   margin: 0;
   padding: 0;
   /*border-style: solid;*/
-  border-top: 2px solid #0e76d1;
-  border-bottom: 2px solid #0e76d1;
+  border-top: 1px solid #0e76d1;
+  border-bottom: 1px solid #0e76d1;
 
 }
